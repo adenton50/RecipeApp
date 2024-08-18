@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import styles from "./fooditem.module.css";
 
-export default function FoodItem({ food, setFoodId }) {
+export default function FoodItem({ food, setFoodId, myRecipes, setMyRecipes }) {
+  useEffect(() => {
+    try {
+      localStorage.setItem("myRecipes", JSON.stringify(myRecipes));
+    } catch (error) {
+      console.error("Error saving recipes:", error);
+    }
+  }, [myRecipes]); // This effect runs whenever myRecipes changes
+
   function addRecipe(id) {
     setMyRecipes((prev) => [...prev, id]);
   }
