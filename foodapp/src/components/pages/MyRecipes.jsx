@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MainLayout from "../MainLayout";
+import styles from "../fooditem.module.css";
 
 export default function MyRecipes() {
   const [foods, setFoods] = useState([]);
@@ -42,22 +43,36 @@ export default function MyRecipes() {
     fetchAllFoods();
   }, [API_KEY]);
 
-  console.log(foods);
+  //console.log(foods);
   if (foods === null || foods === undefined) {
-    return <div>hello</div>;
+    return <div></div>;
   } else {
     return (
       <div>
-        <MainLayout>
-          <div>
-            {foods.map((food) => (
-              <div key={food.id}>
-                <img src={food.image} alt={food.title} />
-                <p>{food.title}</p>
+        <MainLayout />
+        <div>
+          {foods.map((food) => (
+            <div key={food.id}>
+              <div className={styles.itemContainer}>
+                <img className={styles.image} src={food.image} alt=""></img>
+                <div className={styles.itemContent}>
+                  <p className={styles.itemName}>{food.title}</p>
+                </div>
+                <div className={styles.buttonContainer}>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      window.open(food.sourceUrl, "_blank");
+                    }}
+                  >
+                    View Full Recipe
+                  </button>
+                  <button className={styles.button}>Remove Recipe</button>
+                </div>
               </div>
-            ))}
-          </div>
-        </MainLayout>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
