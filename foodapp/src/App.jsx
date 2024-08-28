@@ -10,19 +10,13 @@ import MainLayout from "./components/MainLayout";
 function App() {
   const [foodData, setFoodData] = useState([]);
   const [foodId, setFoodId] = useState("");
-  const [myRecipes, setMyRecipes] = useState([]);
   return (
     <div>
       <MainLayout />
       <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>
         <InnerContainer>
-          <FoodList
-            setFoodId={setFoodId}
-            foodData={foodData}
-            myRecipes={myRecipes}
-            setMyRecipes={setMyRecipes}
-          />
+          <FoodList setFoodId={setFoodId} foodData={foodData} />
         </InnerContainer>
         <InnerContainer>
           <FoodDetail foodId={foodId} />

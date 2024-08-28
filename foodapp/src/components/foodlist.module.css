@@ -1,4 +1,14 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr; /* Default to 1 column */
+}
+
+@media (min-width: 768px) {
+  /* Adjust the breakpoint as needed */
+  .grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 columns for medium screens and up */
+  }
 }
