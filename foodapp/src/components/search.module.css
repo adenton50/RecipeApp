@@ -8,7 +8,6 @@
 }
 
 @media (min-width: 768px) {
-  /* Adjust the breakpoint as needed */
   .searchContainer {
     position: relative;
     display: flex;
